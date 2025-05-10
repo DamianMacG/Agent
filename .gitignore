@@ -1,0 +1,19 @@
+# Node.js - ignore node_modules in frontend
+frontend/node_modules/
+frontend/dist/
+
+# Python - ignore virtual environments, caches, etc.
+backend/__pycache__/
+backend/.venv/
+backend/env/
+backend/.mypy_cache/
+
+# General
+*.env
+*.log
+.DS_Store
+Thumbs.db
+
+# IDE folders
+.vscode/
+.idea/
