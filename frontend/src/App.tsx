@@ -1,36 +1,8 @@
 import './index.css';
-import AgentCard from './components/AgentCard';
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { setAgents } from './redux/agentsSlice';
-import type { RootState } from './redux/store';
-import type { Agent } from './types/agent';
+import AppRouter from './routes/Router';
 
-function App() {
-  const dispatch = useDispatch();
-  const agents = useSelector((state: RootState) => state.agents.list);
-
-  useEffect(() => {
-    // Fake agent data (you can fetch from backend later)
-    const mockAgents: Agent[] = [
-      { id: '1', name: 'Agent Alpha', status: 'running' },
-      { id: '2', name: 'Agent Beta', status: 'idle' },
-      { id: '3', name: 'Agent Gamma', status: 'error' },
-    ] as const;
-    dispatch(setAgents(mockAgents.slice()));
-  }, [dispatch]);
-
-  return (
-    <div className="min-h-screen bg-gray-100 p-8 space-y-4">
-      <h1 className="text-3xl font-bold text-center text-blue-600 mb-6">Agent Dashboard</h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {agents.map((agent) => (
-          <AgentCard key={agent.id} name={agent.name} status={agent.status} />
-        ))}
-      </div>
-    </div>
-  );
+export default function App() {
+  return <AppRouter />;
 }
 
-export default App;
 
