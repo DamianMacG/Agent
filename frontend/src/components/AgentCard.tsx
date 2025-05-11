@@ -1,6 +1,10 @@
 import type { Agent } from '../types/agent';
 
-export default function AgentCard({ name, status, role, goal }: Agent) {
+type AgentCardProps = Agent & {
+  onRunTask?: (agentId: string) => void;
+};
+
+export default function AgentCard({ id, name, status, role, goal, onRunTask }: AgentCardProps) {
   return (
     <div className="border rounded-lg p-4 shadow bg-white">
       <div className="flex justify-between items-center mb-2">
@@ -13,7 +17,15 @@ export default function AgentCard({ name, status, role, goal }: Agent) {
         </span>
       </div>
       <div className="text-sm text-gray-700 mb-1"><strong>Role:</strong> {role}</div>
-      <div className="text-sm text-gray-700"><strong>Goal:</strong> {goal}</div>
+      <div className="text-sm text-gray-700 mb-2"><strong>Goal:</strong> {goal}</div>
+      {onRunTask && (
+        <button
+          className="mt-2 px-3 py-1 bg-green-600 text-white rounded"
+          onClick={() => onRunTask(id)}
+        >
+          Run Task
+        </button>
+      )}
     </div>
   );
 }

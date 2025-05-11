@@ -37,6 +37,11 @@ useEffect(() => {
     });
 }, [dispatch]);
 
+const handleRunTask = (agentId: string) => {
+  toast.success(`Task triggered for agent ${agentId}!`);
+  // In the future, dispatch a Redux action or call an API here
+};
+
   const handleCreateAgent = (agent: { name: string; role: string; goal: string }) => {
     try{
     // Generate a unique id for the new agent (for demo purposes)
@@ -45,7 +50,7 @@ useEffect(() => {
       name: agent.name,
       status: 'idle', // default status
       role: agent.role,
-      goal: agent.goal,
+      goal: agent.goal
     };
     dispatch(addAgent(newAgent));
     setModalOpen(false);
@@ -98,6 +103,7 @@ useEffect(() => {
                   status={agent.status}
                   role={agent.role}
                   goal={agent.goal}
+                  onRunTask={handleRunTask}
                 />
               ))
             )}
