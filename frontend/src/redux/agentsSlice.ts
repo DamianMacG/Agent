@@ -18,8 +18,11 @@ const agentsSlice = createSlice({
     setAgents(state, action: PayloadAction<Agent[]>) {
       state.list = action.payload;
     },
+    addAgent(state, action: PayloadAction<Agent>) {
+      state.list.push(action.payload);
+    },
   },
 });
 
-export const { setAgents } = agentsSlice.actions;
+export const { setAgents, addAgent } = agentsSlice.actions;
 export default agentsSlice.reducer;

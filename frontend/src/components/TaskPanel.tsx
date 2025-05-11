@@ -12,7 +12,7 @@ const statusColors = {
 
 /**
  * Displays a task card with title and status badge.
- * Used to visualize task status in the dashboard.
+ * Used to visualise task status in the dashboard.
  */
 export default function TaskPanel({ task }: TaskPanelProps) {
   return (
