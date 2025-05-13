@@ -1,4 +1,4 @@
-import { useEffect, useStatenpm install --save-dev jest @testing-library/react @testing-library/jest-dom @testing-library/user-event @types/jest ts-jest } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setAgents, addAgent } from '../redux/agentsSlice';
 import { setTasks } from '../redux/tasksSlice';
@@ -61,9 +61,9 @@ const handleRunTask = (agentId: string) => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 p-8">
+    <div className="p-8">
       <Toaster position="top-right"/>
-      <h1 className="text-3xl font-bold text-center text-blue-600 mb-6">Agent Dashboard</h1>
+      <h1 className="text-4xl font-bold text-white tracking-tighter">Agent Dashboard</h1>
 
     {/* Error message */}
     {error && (
@@ -109,7 +109,7 @@ const handleRunTask = (agentId: string) => {
             )}
           </div>
 
-          <h2 className="text-2xl font-semibold mt-10 mb-4">Tasks</h2>
+          <h2 className="text-3xl font-bold text-white mt-10 mb-4">Tasks</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {tasks.length === 0 ? (
               <div className="col-span-full text-center text-gray-500">No tasks yet.</div>
