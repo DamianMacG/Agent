@@ -1,4 +1,3 @@
-// src/redux/agentsSlice.ts
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 import type { Agent } from '../types/agent';
@@ -21,8 +20,17 @@ const agentsSlice = createSlice({
     addAgent(state, action: PayloadAction<Agent>) {
       state.list.push(action.payload);
     },
+    updateAgent(state, action: PayloadAction<Agent>) {
+      const idx = state.list.findIndex(a => a.id === action.payload.id);
+      if (idx !== -1) {
+        state.list[idx] = action.payload;
+      }
+    },
+    deleteAgent(state, action: PayloadAction<string>) {
+      state.list = state.list.filter(a => a.id !== action.payload);
+    },
   },
 });
 
-export const { setAgents, addAgent } = agentsSlice.actions;
+export const { setAgents, addAgent, updateAgent, deleteAgent } = agentsSlice.actions;
 export default agentsSlice.reducer;

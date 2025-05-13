@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useStatenpm install --save-dev jest @testing-library/react @testing-library/jest-dom @testing-library/user-event @types/jest ts-jest } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setAgents, addAgent } from '../redux/agentsSlice';
 import { setTasks } from '../redux/tasksSlice';
@@ -23,18 +23,18 @@ export default function Dashboard() {
   const [error, setError] = useState<string | null>(null);
 
 useEffect(() => {
-  setLoading(true);
-  setError(null);
-  Promise.all([fetchAgents(), fetchTasks()])
-    .then(([agents, tasks]) => {
-      dispatch(setAgents(agents));
-      dispatch(setTasks(tasks));
-      setLoading(false);
-    })
-    .catch(() => {
-      setError('Failed to load data.');
-      setLoading(false);
-    });
+ 
+    setLoading(true);
+    Promise.all([fetchAgents(), fetchTasks()])
+      .then(([agents, tasks]) => {
+        dispatch(setAgents(agents));
+        dispatch(setTasks(tasks));
+        setLoading(false);
+      })
+      .catch(() => {
+        setError('Failed to load data.');
+        setLoading(false);
+      });
 }, [dispatch]);
 
 const handleRunTask = (agentId: string) => {
